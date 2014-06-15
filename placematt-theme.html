@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<!--
+placematt tumblr theme
+almost 100% based off of placematt.tumblr.com
+
+to use:
+  get code from http://www.mxew.org/tumblr/placematt.txt
+  copy & paste HTML code into the Tumblr html editor
+  hit save
+
+you can delete this message if you want
+-->
+    <head>
+        <title>{block:PostSummary}{PostSummary} | {/block:PostSummary}{title}</title>
+        <meta name="description" content="{MetaDescription}" />
+        <link rel="shortcut icon" href="{favicon}">
+        <meta name="if:Show Following" content="1"/>
+        <meta name="if:Show Elsewhere Links" content="0"/>
+        <meta name="if:us not me" content="0"/>
+        <meta name="text:Facebook Username" content=""/>
+        <meta name="text:Twitter Username" content=""/>
+        <meta name="text:Github Username" content=""/>
+        <meta name="text:Lastfm Username" content=""/>
+        <meta name="text:Foursquare Username" content=""/>
+        <meta name="text:Instagram Username" content=""/>
+        <meta name="text:Soundcloud Username" content=""/>
+        <meta name="text:This Is My Jam Username" content=""/>
+        <link rel="stylesheet"href="http://static.tumblr.com/idz8dn2/jJnn789p4/placematt.css" type="text/css" />
+        {block:Twitter}<script src="http://static.tumblr.com/idz8dn2/tVen7898v/twitter.js"></script>{/block:Twitter}
+    </head>
+    <body>
+        <div id="container">
+          <div class="inner">
+            <div id="top">
+                <div class="header">
+                    <div class="title">
+                       <a href="/"><h1>{title}</h1></a>
+                    </div>
+                    <div class="nav">
+                        <!--TODO: FIXME -->
+                        <a href="/random">random</a>
+                        <a href="/archive">archive</a>
+                       {block:AskEnabled} <a style="text-transform:lowercase;" href="/ask">{AskLabel}</a>{/block:AskEnabled}
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div id="mid">
+                <div class="bar">
+                    <div>
+                        <h3>about</h3>
+                        {description}
+                    </div>
+                    {block:IfShowElsewhereLinks}
+                    <div class="section">
+                        <h3>{block:IfUsNotMe}us{/block:IfUsNotMe}{block:IfNotUsNotMe}me{/block:IfNotUsNotMe}, elsewhere</h3>
+                        <!--TODO: FIXME-->
+                        <ul>
+                            {block:IfFacebookUsername}
+                            <li><a href="http://facebook.com/{text:Facebook Username}">Facebook</a></li>{/block:IfFacebookUsername}
+                            {block:IfTwitterUsername}<li><a href="http://twitter.com/{text:Twitter Username}">Twitter</a></li>{/block:IfTwitterUsername}
+                            {block:IfGithubUsername}<li><a href="http://github.com/{text:Github Username}">Github</a></li>{/block:IfGithubUsername}
+                            {block:IfLastfmUsername}<li><a href="http://last.fm/user/{text:Lastfm Username}">Last.fm</a></li>{/block:IfLastfmUsername}
+                            {block:IfFoursquareUsername}<li><a href="http://foursquare.com/{text:Foursquare Username}">Foursquare</a></li>{/block:IfFoursquareUsername}
+                            {block:IfInstagramUsername}<li><a href="http://instagram.com/{text:Instagram Username}">Instagram</a></li>{/block:IfInstagramUsername}
+                            {block:IfSoundcloudUsername}<li><a href="http://soundcloud.com/{text:Soundcloud Username}">Soundcloud</a></li>{/block:IfSoundcloudUsername}
+                            {block:IfThisIsMyJamUsername}<li><a href="http://thisismyjam.com/{text:This Is My Jam Username}">This is My Jam</a></li>{/block:IfThisIsMyJamUsername}
+                        </ul>
+                    </div>
+                    {/block:ifShowElsewhereLinks}
+                                        {block:Twitter}
+    <div id="twitter" style="display:none"class="section">
+        <div class="quote"><div id="tweets"></div></div>
+        <div class="tri"> </div>
+        <div id="twsource" class="source"></div>
+    </div>
+
+    <script type="text/javascript">
+
+    </script>
+{/block:Twitter}
+                    {block:IndexPage}
+                   {block:IfShowFollowing} {block:Following}<div class="section" id="following">
+                        <h3>cool folks</h3>
+                        {block:Followed}
+                        <div class="oop"><a title="{FollowedTitle}" href="{FollowedURL}"><img src="{FollowedPortraitURL-30}"/></a></div>
+                        {/block:Followed}
+                    </div>{/block:Following}{/block:IfShowFollowing}{/block:IndexPage}
+                </div>
+                <div class="content">
+                  
+                    <div class="posts"><ul class="postz">
+                    {block:Posts}<li class="postt">
+                        {block:date}<div class="date">
+                        <div class="permalink"><a title="posted at {12Hour}:{Minutes} {AmPm}" href="{permalink}">{DayOfMonth} {ShortMonth} {Year}</a></div>
+                        {block:HasTags}<div class="tags">
+                            {block:Tags}
+                                <a href="{TagURL}">{tag}</a>
+                            {/block:Tags}
+                        </div> {/block:HasTags}
+                        <div class="clear"></div>
+                        </div>{/block:date}
+                        <div class="chunk">
+                        {block:text}
+                          {block:Title}<h2>{title}</h2>{/block:Title}  
+                            {body}
+                        {/block:text}
+                        {block:photo}
+                      <img src="{PhotoURL-500}"/>
+                        {block:Caption}{Caption}{/block:Caption}
+                        {/block:photo}
+                        {block:Photoset}
+                        {Photoset-500}
+                        {block:Caption}{Caption}{/block:Caption}
+                        {/block:Photoset}
+                        {block:quote}
+                        <div class="quote">"{Quote}"</div>
+                        {block:Source}{source}{/block:Source}
+                        {/block:quote}
+                        {block:link}
+                        <h2><a href="{URL}" target="{target}">{Name}</a></h2>
+                        {block:Description}{Description}{/block:Description}
+                        {/block:link}
+                        {block:audio}
+                        {AudioEmbed-500}
+                        {block:Caption}{Caption}{/block:Caption}
+                        {/block:audio}
+                        {block:video}
+                        {VideoEmbed-500}
+                        {block:Caption}{Caption}{/block:Caption}
+                        {/block:video}
+                        </div>
+                     </li>{/block:Posts}
+                     </ul></div>
+                    {block:Pagination}<div class="page-nav">
+                        {block:PreviousPage}<a href="{PreviousPage}"><div class="left">page back</div></a>{/block:PreviousPage}
+                        {block:NextPage}<a href="{NextPage}"><div class="right">page forward</div></a>{/block:NextPage}
+                        <div class="center">{CurrentPage} of {TotalPages}</div>
+                    </div>{/block:Pagination}
+                    {block:PermalinkPage}{block:PermalinkPagination}
+                    <div class="page-nav">
+                        {block:PreviousPost}<a href="{PreviousPost}"><div class="left">previous entry</div></a>{/block:PreviousPost}
+                        {block:NextPost}<a href="{NextPost}"><div class="right">next entry</div></a>{/block:NextPost}
+                    </div>
+                    {/block:PermalinkPagination}{/block:PermalinkPage}
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+         
+            <div id="bottom">
+                <div class="foot">
+                    <div class="credit">
+                        Powered by Tumblr
+                    </div>
+                    <div class="copy">
+                        &copy {copyrightyears}                                                 </div>
+                <div class="clear"></div>         
+                </div><!--/footer-->
+            </div>
+          </div>
+        </div>
+    </body>
+    {block:Twitter}
+    <script type="text/javascript" src="/tweets.js"></script>
+{/block:Twitter}
+</html>
